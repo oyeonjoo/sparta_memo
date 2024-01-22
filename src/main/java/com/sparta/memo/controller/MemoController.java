@@ -12,6 +12,7 @@ import java.util.List;
 public class MemoController {
 
     private final MemoService memoService;
+
     public MemoController(MemoService memoService) {
         this.memoService = memoService;
     }
@@ -24,6 +25,11 @@ public class MemoController {
     @GetMapping("/memos")
     public List<MemoResponseDto> getMemos() {
         return memoService.getMemos();
+    }
+
+    @GetMapping("/memos/contents")
+    public List<MemoResponseDto> getMemosByKeyword(String keyword) {
+        return memoService.getMemosByKeyword(keyword);
     }
 
     @PutMapping("/memos/{id}")
